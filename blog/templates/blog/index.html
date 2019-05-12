@@ -1,21 +1,20 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Blog</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-</head>
-<body>
-   <ul>
-       {% for b in blog %}
-       <li>
+{% extends 'blog/base/base.html' %}
+
+{% block title %}
+Blogs
+{% endblock %}
+
+{% block content %}
+<ul>
+
+    {% for b in blog %}
+    <li>
         {{ b.title }}
         <br>
         {{ b.body }}
-       </li>
-       <br>
-       {% endfor %}
-   </ul>
-</body>
-</html>
+    </li>
+    <br>
+    {% endfor %}
+</ul>
+
+{% endblock %}
