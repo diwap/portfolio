@@ -7,6 +7,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 <body>
-   Hello this is blog page
+   <ul>
+       {% for b in blog %}
+       <li>
+        {{ b.title }}
+        <br>
+        {{ b.body }}
+       </li>
+       <br>
+       {% endfor %}
+   </ul>
 </body>
 </html>
