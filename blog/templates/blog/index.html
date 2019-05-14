@@ -1,15 +1,21 @@
 {% extends 'blog/base/base.html' %}
+{% load static %}
 
 {% block title %}
 Blogs
 {% endblock %}
 
 {% block content %}
+
+
+<img src="{% static 'default_blog.jpg' %}" alt="">
+
 <ul>
 
     {% for b in blog %}
     <li>
         {{ b.title }}
+        <img src="{{ b.cover_image.url }}" alt="" width="60px" >
         <br>
         {{ b.body }}
     </li>
