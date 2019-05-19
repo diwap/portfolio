@@ -8,3 +8,9 @@ def blog_list(request):
         'blog': Blog.objects.all()
     }
     return render(request, 'blog/index.html', context)
+
+def blog_detail(request, id):
+    context = {
+        'blog': Blog.objects.get(pk=id)
+    }
+    return render(request, 'blog/blog_detail.html', context)

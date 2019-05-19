@@ -9,9 +9,13 @@ class Blog(models.Model):
     # Execute makemigrations to create migration file and migrate to populate in database
 
     def trunc_body(self):
-        return "{0} ...".format(
-            self.body[:100]
-        )
+        trunc_body = self.body[:100]
+        if len(trunc_body) >= 100:
+            return "{0} ...".format(
+                self.body[:100]
+            )
+        else:
+            return trunc_body
 
     def __str__(self):
         return self.title
