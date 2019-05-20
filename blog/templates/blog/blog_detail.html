@@ -1,5 +1,6 @@
 {% extends 'blog/base/base.html' %}
 {% load static %}
+{% load humanize %}
 
 {% block title %}
 Blogs Detail
@@ -7,8 +8,34 @@ Blogs Detail
 
 {% block content %}
 
-<h1>{{blog.title}}</h1>
-<img width="500" src="{{ blog.cover_image.url }}" alt="{{ blog.title }}">
-<p>{{blog.body}}</p>
+<div class="cover-image">
+</div>
+
+<div class="container">
+    <div class="mt-4 mb-4">
+        <h2>{{ blog.title }}</h2>
+        <p>Updated by {{ blog.created_by.first_name }} {{ blog.created_by.last_name }} on {{ blog.created_date|naturaltime }}</p>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="body mb-4">
+                {{ blog.body }}
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    .cover-image {
+        width: 100%;
+        height: 500px;
+        background-image: url("{{ blog.cover_image.url }}");
+        background-position: center;
+        background-size: cover;
+    }
+    .body {
+        text-align: justify;
+    }
+</style>
 
 {% endblock %}
