@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'blog',
     'django.contrib.humanize',
     'about',
+    'tinymce',
 ]
 
 MIDDLEWARE = [

@@ -1,10 +1,12 @@
 from django.db import models
+from tinymce.models import HTMLField
 
 from django.contrib.auth.models import User
 
 class Blog(models.Model):
     title = models.CharField(max_length=100)
     body = models.TextField()
+    content = HTMLField(default="No content")
 
     # if no default is defined, add attribute null=True, blank=True
     cover_image = models.ImageField(upload_to="blogs", default="static/default_blog.jpg")
