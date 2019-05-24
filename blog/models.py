@@ -5,7 +5,6 @@ from django.contrib.auth.models import User
 
 class Blog(models.Model):
     title = models.CharField(max_length=100)
-    body = models.TextField()
     content = HTMLField(default="No content")
 
     # if no default is defined, add attribute null=True, blank=True
@@ -16,10 +15,10 @@ class Blog(models.Model):
     created_by = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
 
     def trunc_body(self):
-        trunc_body = self.body[:100]
+        trunc_body = self.content[:100]
         if len(trunc_body) >= 100:
             return "{0} ...".format(
-                self.body[:100]
+                self.content[:100]
             )
         else:
             return trunc_body

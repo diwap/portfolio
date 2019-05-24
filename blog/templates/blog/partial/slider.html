@@ -11,7 +11,7 @@
                     <img src="{{ b.cover_image.url }}" class="d-block w-100" alt="{{ b.title }}">
                     <div class="carousel-caption d-none d-md-block">
                         <h5><a class="link-unstyled" href="{% url 'blog_detail' b.id %}">{{ b.title }}</a></h5>
-                        <p>{{ b.trunc_body }}</p>
+                        <p>{{ b.trunc_body|safe }}</p>
                     </div>
                 </div>
                 
@@ -20,7 +20,7 @@
                     <img src="{{ b.cover_image.url }}" class="d-block w-100" alt="{{ b.title }}">
                     <div class="carousel-caption d-none d-md-block">
                         <h5><a class="link-unstyled" href="{% url 'blog_detail' b.id %}">{{ b.title }}</a></h5>
-                        <p>{{ b.trunc_body }}</p>
+                        <p>{{ b.trunc_body|safe }}</p>
                     </div>
                 </div>
             {% endif %}

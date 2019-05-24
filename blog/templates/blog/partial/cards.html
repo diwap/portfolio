@@ -9,7 +9,7 @@
                 <div class="card-body">
                     <h5 class="card-title" data-toggle="tooltip" title="{{ b.title }}">{{ b.title|slice:":30" }}{% if b.title|length >= 30 %} ...{% endif %}</h5>
                     <p class="card-text">
-                        {{ b.trunc_body }}
+                        {{ b.trunc_body|safe }}
                     </p>
                     <a href="{% url 'blog_detail' b.id %}" class="btn btn-primary">Read More</a>
                 </div>
