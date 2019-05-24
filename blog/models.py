@@ -25,3 +25,14 @@ class Blog(models.Model):
 
     def __str__(self):
         return self.title
+
+class Comment(models.Model):
+    body = models.TextField()
+    created_date = models.DateTimeField(auto_now=True)
+
+    created_by = models.CharField(max_length=50, default="Anonymous")
+
+    blog = models.ForeignKey(Blog, on_delete=models.CASCADE, null=True)
+
+    class Meta:
+        ordering = ['created_by']

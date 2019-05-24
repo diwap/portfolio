@@ -1,0 +1,46 @@
+<div class="row">
+    <div class="col-md-6">
+        <h3>Comments</h3>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-8">
+        <div class="card my-4">
+            <h5 class="card-header">Leave a Comment:</h5>
+            <div class="card-body">
+                <form action="" method="POST">
+                    {% csrf_token %}
+                    <div class="form-group">
+                        <input class="form-control" type="text" name="created_by" id="created_by" placeholder="Your Name" value="Anonymous">
+                    </div>
+                    <div class="form-group">
+                        <textarea name="body" id="body" class="form-control" rows="3" placeholder="Enter your comment"></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% for c in comment %}
+<div class="row">
+    <div class="col-md-8">
+        <div class="media">
+            <div class="media-body">
+                <h5 class="mt-0">{{ c.created_by }}</h5>
+                {{ c.body }}
+            </div>
+        </div>
+    </div>
+</div>
+{% endfor %}
+
+
+<style>
+    .media {
+        padding: 10px;
+        border: 1px solid black;
+        margin-bottom: 20px
+    }
+</style>

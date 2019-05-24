@@ -1,6 +1,6 @@
 from django.shortcuts import render
 
-from blog.models import Blog
+from blog.models import Blog, Comment
 
 
 def blog_list(request):
@@ -10,7 +10,18 @@ def blog_list(request):
     return render(request, 'blog/index.html', context)
 
 def blog_detail(request, id):
+
+    if request.method == 'POST':
+        created_by = request.POST.get('created_by', None)
+        body = request.POST.get('body', None)
+
+        if created_by and body:
+            blog = Blog.objects.get(pk=id)
+            comnt = Comment(created_by=created_by, body=body, blog=blog)
+            comnt.save()
+    
     context = {
-        'blog': Blog.objects.get(pk=id)
+        'blog': Blog.objects.get(pk=id),
+        'comment': Comment.objects.filter(blog=id)
     }
     return render(request, 'blog/blog_detail.html', context)
