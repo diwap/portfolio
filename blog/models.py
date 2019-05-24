@@ -35,4 +35,4 @@ class Comment(models.Model):
     blog = models.ForeignKey(Blog, on_delete=models.CASCADE, null=True)
 
     class Meta:
-        ordering = ['created_by']
+        ordering = ['-created_date']
