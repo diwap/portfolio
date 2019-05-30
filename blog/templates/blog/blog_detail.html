@@ -14,7 +14,11 @@ Blogs Detail
 <div class="container">
     <div class="mt-4 mb-4">
         <h2>{{ blog.title }}</h2>
-        <p>Updated by {{ blog.created_by.first_name }} {{ blog.created_by.last_name }} on {{ blog.created_date|naturaltime }}</p>
+        <p>
+            Updated by {{ blog.created_by.first_name }} {{ blog.created_by.last_name }} on {{ blog.created_date|naturaltime }}
+            <span class="float-right">Total Views: {{blog.total_views}}</span>
+        </p>
+        <hr>
     </div>
     <div class="row">
         <div class="col-md-12">

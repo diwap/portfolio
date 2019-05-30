@@ -11,8 +11,10 @@ class Blog(models.Model):
     cover_image = models.ImageField(upload_to="blogs", default="static/default_blog.jpg")
     # Execute makemigrations to create migration file and migrate to populate in database
 
-    created_date = models.DateTimeField(auto_now=True)
+    created_date = models.DateTimeField(auto_now_add=True)
     created_by = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
+
+    total_views = models.IntegerField(default=1)
 
     def trunc_body(self):
         trunc_body = self.content[:100]
@@ -25,6 +27,9 @@ class Blog(models.Model):
 
     def __str__(self):
         return self.title
+
+    class Meta:
+        ordering = ["-total_views"]
 
 class Comment(models.Model):
     body = models.TextField()

@@ -8,6 +8,8 @@
                 </div>
                 <div class="card-body">
                     <h5 class="card-title" data-toggle="tooltip" title="{{ b.title }}">{{ b.title|slice:":30" }}{% if b.title|length >= 30 %} ...{% endif %}</h5>
+                    <p class="total-views">Total views: {{ b.total_views }}</p>
+                    <hr>
                     <p class="card-text">
                         {{ b.trunc_body|safe }}
                     </p>
@@ -23,6 +25,11 @@
     .card-img-main {
         height: 200px;
         overflow: hidden;
+    }
+    .total-views {
+        font-family: 'Indie Flower', cursive;
+        font-size: 0.9rem;
+        font-weight: 700
     }
 </style>
 <script>

@@ -3,6 +3,11 @@ from django.shortcuts import render
 from blog.models import Blog, Comment
 
 
+# def view_counter(id):
+#     ptv = Blog.objects.get(pk=id)
+#     ptv.total_views = ptv.total_views + 1
+#     ptv.save()
+
 def blog_list(request):
     context = {
         'blog': Blog.objects.all()
@@ -10,6 +15,11 @@ def blog_list(request):
     return render(request, 'blog/index.html', context)
 
 def blog_detail(request, id):
+
+    if request.method == 'GET':
+        ptv = Blog.objects.get(pk=id)
+        ptv.total_views = ptv.total_views + 1
+        ptv.save()
 
     if request.method == 'POST':
         created_by = request.POST.get('created_by', None)
