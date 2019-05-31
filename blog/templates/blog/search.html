@@ -1,0 +1,48 @@
+{% extends 'blog/base/base.html' %}
+{% load static %}
+
+{% block title %}
+Blogs
+{% endblock %}
+
+{% block content %}
+{% if blogs %}
+    {% include 'blog/partial/cards.html' %}
+{% else %}
+    <div class="no-search-data">
+        <p>No data found</p>
+        <span>You will be redirected to blog page after <b id="redirect-timer">5 </b> seconds</span>
+        <meta http-equiv="refresh" content="5;url={% url 'blog_list' %}"> 
+    </div>
+    <style>
+        .no-search-data {
+            padding: 10%;
+            text-align: center;
+            color: #9c9c9c;
+        }
+        .no-search-data p {
+            font-size: 4rem;
+        }
+        footer {
+            position: fixed !important;
+        }
+    </style>
+
+    {% block extrascripts %}
+    <script>
+         document.addEventListener('DOMContentLoaded', function() {
+            var counter = 5
+            var interval = setInterval(function() {
+                counter--;
+                if (counter == 0) {
+                    clearInterval(interval);
+                }
+                console.log(counter)
+                document.getElementById("redirect-timer").innerHTML = counter;
+            }, 1000);
+        });
+    </script>
+    {% endblock %}
+{% endif %}
+
+{% endblock %}

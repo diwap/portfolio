@@ -10,7 +10,7 @@ from blog.models import Blog, Comment
 
 def blog_list(request):
     context = {
-        'blog': Blog.objects.all()
+        'blogs': Blog.objects.all()
     }
     return render(request, 'blog/index.html', context)
 
@@ -35,3 +35,13 @@ def blog_detail(request, id):
         'comment': Comment.objects.filter(blog=id)
     }
     return render(request, 'blog/blog_detail.html', context)
+
+def search_blogs(request):
+    context = {
+        'blogs': Blog.objects.all()
+    }
+    q = request.POST.get('q', None) if request.method == 'POST' else context
+    if q:
+        context['blogs'] = Blog.objects.filter(title__icontains=q)
+
+    return render(request, 'blog/search.html', context)

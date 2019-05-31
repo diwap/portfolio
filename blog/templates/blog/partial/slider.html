@@ -5,7 +5,7 @@
         <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
     </ol>
     <div class="carousel-inner">
-        {% for b in blog|slice:":3" %}
+        {% for b in blogs|slice:":3" %}
             {% if forloop.counter == 1 %}
                 <div class="carousel-item active">
                     <img src="{{ b.cover_image.url }}" class="d-block w-100" alt="{{ b.title }}">
@@ -37,7 +37,7 @@
 </div>
 <style>
     .carousel-inner {
-        height: calc(100vh - 56px)
+        height: calc(100vh - 56px);
     }
     .carousel-caption {
         top: calc(100vh - 200px);
