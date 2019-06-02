@@ -7,10 +7,12 @@ Blogs
 
 {% block content %}
 
-<div class="container">
+
+<div class="container mt-5">
+    <h3 class="mb-5">Contact Me</h3>
     <div class="row">
         <div class="col-md-6">
-            <form action="" method="post">
+            <form action="" method="POST">
                 {% csrf_token %}
                 <div class="form-group">
                     <input class="form-control" type="text" placeholder="Name" name="contact_name">
@@ -26,8 +28,24 @@ Blogs
                 </div>
             </form>
         </div>
+        <div class="col-md-6">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3530.9484430107022!2d85.32650031418592!3d27.74973618277437!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39eb193378e4c343%3A0xbcab9e2d519de498!2sDexter+House!5e0!3m2!1sen!2snp!4v1559465798085!5m2!1sen!2snp" width="100%" height="200" frameborder="0" style="border:0" allowfullscreen></iframe>
+            <div class="row">
+                <div class="col-md-12">
+                    <ul>
+                        <li>Contact No: 98840056828</li>
+                        <li>Address: Dhapasi</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
+<style>
+    footer {
+        position: fixed !important;
+    }
+</style>
 
 
 {% endblock %}
